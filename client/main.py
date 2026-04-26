@@ -34,7 +34,6 @@ cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 
 payload_size = struct.calcsize("Q")
-mode = "general"
 
 def recv_all(sock, size):
     buffer = b""
@@ -58,7 +57,6 @@ while True:
 
     payload = msgpack.packb({
         "frame": buffer.tobytes(),
-        "mode": mode
     })
 
     try:
@@ -87,12 +85,6 @@ while True:
     key = cv2.waitKey(1) & 0xFF
     if key == ord('q'):
         break
-    elif key == ord('1'):
-        mode = "general"
-        print("Mode: General")
-    elif key == ord('2'):
-        mode = "search"
-        print("Mode: Search")
 
     # FPS control (~20 FPS)
     elapsed = time.time() - start

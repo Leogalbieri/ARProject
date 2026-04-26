@@ -2,6 +2,8 @@ import torch
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
+SELECTED_MODE = "search"
+
 PRIMARY_MODEL = "rtdetr-x.pt"
 SECONDARY_MODEL = "yolov8x-oiv7.pt"
 SEARCH_MODEL = "yolov8x-worldv2.pt"
@@ -9,7 +11,7 @@ SEARCH_MODEL = "yolov8x-worldv2.pt"
 CONF_THRESHOLD = 0.85
 CONF_THRESHOLD_SEARCH = 0.10
 
-SEARCH_TARGET = ["backpack"]
+SEARCH_TARGET = ["glasses", "sunglasses"]
 
 IMG_SIZE = 640
 

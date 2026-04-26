@@ -85,10 +85,12 @@ while True:
             if frame is None:
                 continue
 
-            mode = payload.get(b"mode", b"general").decode()
+            mode = config.SELECTED_MODE
 
             # --- Inference ---
-            if mode == "general":
+            if mode == "none":
+                annotated = frame
+            elif mode == "general":
                 annotated = general.run(frame, primary, secondary)
             elif mode == "search":
                 annotated = search_mode.run(frame, search)
