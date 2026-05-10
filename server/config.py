@@ -4,6 +4,20 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 SELECTED_MODE = "search"
 
+# WAKE WORD AND MODE SWITCH
+AUDIO_SAMPLERATE = 16000
+AUDIO_CHANNELS = 1
+AUDIO_DATA_TYPE = "int16"
+
+WHISPER_SIZE = "medium"
+WHISPER_DEVICE = "cuda"
+WHISPER_COMPUTE_TYPE = "int8_float16"
+WHISPER_BEAM_SIZE = 5
+WHISPER_LANGUAGE = "pt"
+WHISPER_VAD_FILTER = True
+
+
+# OBJECT RECOGNITION
 PRIMARY_MODEL = "rtdetr-x.pt"
 SECONDARY_MODEL = "yolov8x-oiv7.pt"
 SEARCH_MODEL = "yolov8x-worldv2.pt"

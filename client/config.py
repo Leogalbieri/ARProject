@@ -1,0 +1,16 @@
+# AUDIO CLIENT CONFIG
+
+AUDIO_SAMPLERATE = 16000
+AUDIO_CHANNELS = 1
+AUDIO_DATA_TYPE = "int16"
+AUDIO_CHUNK_SIZE = 4096
+
+VAD_FRAME = 30  # VAD working with 30ms frames
+VAD_AGGRESSIVENESS = 2
+
+WAKE_WORD_THRESHOLD = 0.5
+WAKE_WORD_MODEL = "hey_jarvis"
+WAKE_WORD_INFERENCE_FRAMEWORK = "onnx"
+
+SILENCE_FRAMES_LIMIT = 67   # 2 seconds of silence to stop recording
+MAX_DURATION = 10   # 10 seconds of max audio duration
