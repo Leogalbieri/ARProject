@@ -7,6 +7,7 @@ import cv2
 from dotenv import load_dotenv
 import os
 import config
+import time
 
 load_dotenv()
 PORT = os.getenv("IMAGE_PORT")
@@ -38,7 +39,14 @@ server.listen(1)
 
 # --- Warmup ---
 dummy = np.zeros((480, 640, 3), dtype=np.uint8)
-primary.infer(dummy)
+
+with torch.no_grad():
+    primary.infer(dummy)
+    secondary.submit(dummy)
+    search.submit(dummy)
+
+time.sleep(1)
+
 print("Ready!")
 
 payload_size = struct.calcsize("Q")

@@ -2,7 +2,7 @@ import torch
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-SELECTED_MODE = "search"
+SELECTED_MODE = "none"
 
 # WAKE WORD AND MODE SWITCH
 AUDIO_SAMPLERATE = 16000
