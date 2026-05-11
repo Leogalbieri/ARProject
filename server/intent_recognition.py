@@ -1,24 +1,22 @@
 import re
 import keywords
-import config
+import mode_state
 
 
 def process(text):
     print(f"Processing: {text}")
 
-    # Remove caracteres especiais, espaços duplicados e converte para minúsculo
+    # Clean text
     text = re.sub(r"[^\w\s]", "", " ".join(text.split()).lower())
 
     print(f"Processed: {text}")
 
-    # Desativa modo reconhecimento
+    # Disable all modes
     if any(trigger in text for trigger in keywords.NONE_KEYWORDS):
-        config.SELECTED_MODE = "none"
+        mode_state.set_mode("none")
         print("Switching all modes off")
 
-    # Ativa modo reconhecimento
+    # Enable general recognition mode
     elif any(trigger in text for trigger in keywords.GENERAL_SEARCH_KEYWORDS):
-        config.SELECTED_MODE = "general"
+        mode_state.set_mode("general")
         print("Switching to general mode")
-
-    return config.SELECTED_MODE

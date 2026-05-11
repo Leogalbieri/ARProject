@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 import os
 import config
 import time
+import mode_state
 
 load_dotenv()
 PORT = os.getenv("IMAGE_PORT")
@@ -53,6 +54,7 @@ payload_size = struct.calcsize("Q")
 
 from modes import general, search as search_mode
 
+
 def recv_all(conn, size):
     buffer = b""
     while len(buffer) < size:
@@ -61,6 +63,7 @@ def recv_all(conn, size):
             return None
         buffer += packet
     return buffer
+
 
 while True:
     print("Waiting for connection...")
@@ -93,7 +96,7 @@ while True:
             if frame is None:
                 continue
 
-            mode = config.SELECTED_MODE
+            mode = mode_state.get_mode()
 
             # --- Inference ---
             if mode == "none":

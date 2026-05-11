@@ -5,6 +5,7 @@ import numpy as np
 import os
 from dotenv import load_dotenv
 import config
+from intent_recognition import process
 
 load_dotenv()
 PORT = os.getenv("AUDIO_PORT")
@@ -65,14 +66,17 @@ while True:
     audio_array = np.frombuffer(audio_bytes, dtype=DATA_TYPE)
     audio_array = audio_array.astype(np.float32) / 32768.0
 
-    segments, info = model.transcribe(
-        audio_array,
-        beam_size=config.WHISPER_BEAM_SIZE,
-        language=config.WHISPER_LANGUAGE,
-        vad_filter=config.WHISPER_VAD_FILTER
-    )
 
-    for segment in segments:
-        print(f"{segment.text}")
+    def transcribe(audio_array):
+        segments, info = model.transcribe(
+            audio_array,
+            beam_size=config.WHISPER_BEAM_SIZE,
+            language=config.WHISPER_LANGUAGE,
+            vad_filter=config.WHISPER_VAD_FILTER
+        )
+        return "".join(segment.text for segment in segments)
+
+    text = transcribe(audio_array)
+    process(text)
 
     sd.wait()
