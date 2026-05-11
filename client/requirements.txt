@@ -1,5 +1,8 @@
-opencv-python
-numpy
-python-dotenv
-msgpack
-numpy
+msgpack_python==0.5.6
+numpy==2.4.4
+opencv_python==4.10.0.84
+opencv_python==4.13.0.92
+openwakeword==0.6.0
+python-dotenv==1.2.2
+sounddevice==0.5.5
+webrtcvad_wheels==2.0.14

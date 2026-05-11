@@ -1,9 +1,10 @@
-ultralytics~=8.4.31
-opencv-python~=4.13.0.92
-# Install torch manually with CUDA support for your GPU:
-# pip install torch torchvision --index-url https://
-numpy~=2.4.4
-dotenv~=0.9.9
-python-dotenv~=1.2.2
-msgpack
-sounddevice
+asposestorage==1.0.2
+faster_whisper==1.2.1
+msgpack_python==0.5.6
+numpy==2.4.4
+opencv_python==4.10.0.84
+opencv_python==4.13.0.92
+python-dotenv==1.2.2
+server==0.0.0
+sounddevice==0.5.5
+torch==2.5.1+cu121
